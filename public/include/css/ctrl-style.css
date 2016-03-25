@@ -251,6 +251,8 @@ a:hover{
 }
 
 .tab-border{
+	margin-top: -1px;
+	border-top:0px;
 	border-left: 1px #ddd solid;
 	border-right: 1px #ddd solid;
 	border-bottom: 1px #ddd solid;
