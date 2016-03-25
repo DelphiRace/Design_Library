@@ -290,3 +290,10 @@ a:hover{
 	margin-top: 20px;
     margin-bottom: 10px;
 }
+
+.list-item-hide-text{
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	overflow:hidden;
+}
