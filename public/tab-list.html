@@ -15,46 +15,71 @@
 		<script src="include/js/jquery/jquery.min.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="include/js/bootstrap/bootstrap.min.js"></script>
+		<script src="include/js/main/getStyle.js"></script>
 
 		<script>
 			$(function(){
-				var option = {styleKind:"list",style:"media-lift"};
-				// getStyle(option,function(pageStyle){
+				var option = {styleKind:"list",style:"media-left"};
+				getStyle(option,function(pageStyle){
 					
 
-				// 	var option = {styleKind:"list",style:"2grid-add"};
-				// 	getStyle(option,function(addStyle){
-				// 		for(var y=0; y<2;y++){
-				// 			var pageStyleObj = $.parseHTML(pageStyle);
+					// var option = {styleKind:"input",style:"text-li-delete"};
+					var option = {styleKind:"input",style:"text-add"};
+					getStyle(option,function(addStyle){
+						// for(var y=0; y<2;y++){
+						// 	var pageStyleObj = $.parseHTML(pageStyle);
+						// 	$(pageStyleObj).addClass("listContent");
+						// 	for(var i=0; i<2;i++){
+						// 		var addStyleObj = $.parseHTML(addStyle);
+						// 		$(addStyleObj).appendTo( $(pageStyleObj).find("ol") );
+						// 	}
+						// 	// $(pageStyleObj).find(".media-body").find(".list-items-bottom").last().removeClass("list-items-bottom");
+						// 	$(pageStyleObj).appendTo("#grid");
+						// }
+						// $("#grid").find(".listContent").last().removeClass("list-items-bottom");
+						var option = {styleKind:"input",style:"text-li-delete"};
+						getStyle(option,function(listStyle){
+							for(var y=0; y<2;y++){
+								var pageStyleObj = $.parseHTML(pageStyle);
+								$(pageStyleObj).addClass("listContent");
+								var addStyleObj = $.parseHTML(addStyle);
+								
+								$(pageStyleObj).find(".pull-left").empty();
+								$(pageStyleObj).find(".media-body").empty();
+								$("<ol>").addClass("list-item").appendTo( $(pageStyleObj).find(".media-body") );
+								$(addStyleObj).removeClass("list-items-bottom").appendTo( $(pageStyleObj).find(".pull-left") );
+								
+									var listStyleObj = $.parseHTML(listStyle);
+									
+									$(listStyleObj).appendTo( $(pageStyleObj).find("ol") );
+								
+								$(addStyleObj).find(".fa-plus-square-o").click(function(){
+									addListItem($(this), listStyle);
+								});
+								// $(pageStyleObj).find(".media-body").find(".list-items-bottom").last().removeClass("list-items-bottom");
+								$(pageStyleObj).appendTo("#grid");
+							}
+							$("#grid").find(".listContent").last().removeClass("list-items-bottom");
+						});
+					});
+					
+					
+				});
 
-				// 			for(var i=0; i<2;i++){
-				// 				var addStyleObj = $.parseHTML(addStyle);
-				// 				$(addStyleObj).appendTo( $(pageStyleObj).find(".media-body") );
-				// 			}
-				// 			$(pageStyleObj).find(".media-body").find(".list-items-bottom").last().removeClass("list-items-bottom");
-				// 			$(pageStyleObj).appendTo("#grid");
-				// 		}
-				// 	});
+				// getStyle(option,function(pageStyle){
+					
+				// 	$(pageStyle).appendTo("#grid");
+				// 	$(pageStyle).appendTo("#grid");
+				// 	$(pageStyle).appendTo("#grid");
 					
 				// 	$("#grid").find(".list-items-bottom").last().removeClass("list-items-bottom");
 				// });
-
-				getStyle(option,function(pageStyle){
-					
-					$(pageStyle).appendTo("#grid");
-					$(pageStyle).appendTo("#grid");
-					$(pageStyle).appendTo("#grid");
-					
-					$("#grid").find(".list-items-bottom").last().removeClass("list-items-bottom");
-				});
 			});
-			function getStyle(pageStyleOption,callback){
-
-				var stylePath = pageStyleOption.styleKind+"/"+pageStyleOption.style;
-
-				$.get("pages/style/"+stylePath+".html").done(function(pageStyle){
-					callback(pageStyle);
-				});
+			function addListItem(object,listStyle){
+				var object = object.parents(".listContent").find("ol");
+				var listStyleObj = $.parseHTML(listStyle);
+				// console.log(object,listStyle);
+				$(listStyleObj).appendTo(object);
 			}
 		</script>
 	</head>
