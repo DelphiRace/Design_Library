@@ -16,6 +16,7 @@
 		<!-- Bootstrap JavaScript -->
 		<script src="include/js/bootstrap/bootstrap.min.js"></script>
 		<script src="include/js/main/getStyle.js"></script>
+		<script src="include/js/main/bsDialog.js"></script>
 
 		<script>
 			$(function(){
@@ -23,6 +24,7 @@
 				getStyle(option,function(pageStyle){
 					$("#grid").append(pageStyle);
 				});
+				$("#testBs").bsDialog({autoShow:true,showFooterBtn:false});
 			});
 			function addListItem(object,listStyle){
 				var object = object.parents(".listContent").find("ol");
@@ -32,6 +34,10 @@
 				});
 				// console.log(object,listStyle);
 				$(listStyleObj).appendTo(object);
+			}
+
+			function openDialog(){
+				$("#testBs").bsDialog("show");
 			}
 		</script>
 	</head>
@@ -44,8 +50,9 @@
 				</div>
 			</div> 
 		</div>
-
-		
-		
+		<button type="button" class="btn btn-info btn-lg" onclick="openDialog();">Open Modal</button>
+		<div id="testBs">
+			<div>test</div>
+		</div>
 	</body>
 </html>
