@@ -319,3 +319,33 @@ a:hover{
 	-o-text-overflow:ellipsis;
 	overflow:hidden;
 }
+.btn-default-font-color{
+    color: #333 !important;
+}
+
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1;
+    color: #000 !important;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .2;
+    filter: alpha(opacity=20);
+    box-shadow:none !important;
+}
+
+.contents{
+	margin-right: -15px;
+    margin-left: -15px;
+}
+.contents:after,.contents:before{
+	content: '';
+    display: block;
+    clear: both;
+    height: 0;
+}
+
+.item-ol{
+	list-style-type:decimal !important;
+}
