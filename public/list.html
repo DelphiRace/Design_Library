@@ -15,25 +15,20 @@
 		<script src="include/js/jquery/jquery.min.js"></script>
 		<!-- Bootstrap JavaScript -->
 		<script src="include/js/bootstrap/bootstrap.min.js"></script>
-
+		<script src="include/js/main/getStyle.js"></script>
 		<script>
 			$(function(){
-				var option = {styleKind:"list",style:"4grid-modify"};
+				var option = {styleKind:"list",style:"media-left-modify"};
+				// 取得畫面樣式
 				getStyle(option,function(pageStyle){
+					// 相關設定
 					$("#grid").append(pageStyle);
 					$("#grid").append(pageStyle);
+
 					$("#grid").find(".list-items-bottom").last().removeClass("list-items-bottom");
-					// console.log($("#grid").find("div").last());
 				});
 			});
-			function getStyle(pageStyleOption,callback){
-
-				var stylePath = pageStyleOption.styleKind+"/"+pageStyleOption.style;
-
-				$.get("pages/style/"+stylePath+".html").done(function(pageStyle){
-					callback(pageStyle);
-				});
-			}
+			
 		</script>
 	</head>
 	<body>
