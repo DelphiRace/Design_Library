@@ -24,7 +24,10 @@
 				getStyle(option,function(pageStyle){
 					$("#grid").append(pageStyle);
 				});
-				$("#testBs").bsDialog({autoShow:true,showFooterBtn:false});
+				$("#testBs").bsDialog({
+					autoShow:true,
+					showFooterBtn:false
+				});
 			});
 			function addListItem(object,listStyle){
 				var object = object.parents(".listContent").find("ol");
