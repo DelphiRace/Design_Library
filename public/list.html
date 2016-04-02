@@ -16,16 +16,34 @@
 		<!-- Bootstrap JavaScript -->
 		<script src="include/js/bootstrap/bootstrap.min.js"></script>
 		<script src="include/js/main/getStyle.js"></script>
+		<script src="include/js/main/bsDialog.js"></script>
 		<script>
 			$(function(){
-				var option = {styleKind:"list",style:"media-left-modify"};
+				var option = {styleKind:"system",style:"data-empty"};
 				// 取得畫面樣式
 				getStyle(option,function(pageStyle){
 					// 相關設定
 					$("#grid").append(pageStyle);
-					$("#grid").append(pageStyle);
+					// $("#grid").append(pageStyle);
 
 					$("#grid").find(".list-items-bottom").last().removeClass("list-items-bottom");
+				});
+				$("#dialog1").bsDialog({
+					autoShow:true,
+					width: "90%",
+					// modalClass: "col-xs-12 col-md-12",
+					button: [
+						{
+							text: "dialog2",
+							click: function(){
+								$("#dialog2").bsDialog("show");
+							}
+						}
+					]
+				});
+
+				$("#dialog2").bsDialog({
+					autoShow:false
 				});
 			});
 			
@@ -46,6 +64,8 @@
 				</div>
 			</div>
 		</div>
+		<div id="dialog1">dialog1</div>
+		<div id="dialog2">dialog2</div>
 		
 	</body>
 </html>
